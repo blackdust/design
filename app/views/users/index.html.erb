@@ -1,0 +1,97 @@
+<head>
+<p id="notice"><%= notice %></p>
+
+
+
+
+<style>
+*{ margin:0; padding:0; list-style:none;}
+img{ border:0;}
+
+.jd_ad_slide {width: 670px; height: 400px; margin:0 auto; overflow:hidden;position: relative;} 
+.jd_ad_img {position: absolute; left: 0; top: 0;width: 100%; height: 100%;display: none; background:url(http://www.lanrenzhijia.com/demo/images/loading.gif) no-repeat center center;}
+.jd_ad_btn {position: absolute; right: 3px; bottom: 8px;}
+.jd_ad_btn_a {width: 22px; height: 22px;line-height: 22px;margin-right: 5px;text-align: center;border-radius: 11px;background: #999;color: #fff;float: left; text-decoration:none;}
+.jd_ad_btn_a:hover {text-decoration: none;}
+.jd_ad_btn .active {background: #E4393C;}
+
+
+</style>
+
+
+<div id="jdAdSlide" class="jd_ad_slide">
+  <img src="http://img.teamkn.com/i/yEvxhxWp.jpg" class="jd_ad_img">
+  <img data-src="http://img.teamkn.com/i/oJY31cce.jpg" class="jd_ad_img">
+  <img data-src="http://img.teamkn.com/i/ii77xhIP.jpg" class="jd_ad_img">
+  <img data-src="http://img.teamkn.com/i/oOaRQKYE.jpg" class="jd_ad_img">
+
+  
+  
+  <div id="jdAdBtn" class="jd_ad_btn"></div>
+</div>
+
+
+
+
+
+<script src="http://www.lanrenzhijia.com/ajaxjs/jquery.min.js"></script>
+<script src="http://www.lanrenzhijia.com/ajaxjs/jquery-powerSwitch-min.js"></script>
+<script>
+var htmlAdBtn = '';
+$("#jdAdSlide img").each(function(index, image) {
+  var id = "adImage" + index;
+  htmlAdBtn = htmlAdBtn + '<a href="javascript:" class="jd_ad_btn_a" data-rel="'+ id +'">'+ (index + 1) +'</a>';
+  image.id = id;
+});
+$("#jdAdBtn").html(htmlAdBtn).find("a").powerSwitch({
+  eventType: "hover",
+  classAdd: "active",
+  animation: "fade",
+  autoTime: 5000,
+  onSwitch: function(image) {
+    if (!image.attr("src")) {
+      image.attr("src", image.attr("data-src"));  
+    }
+  }
+}).eq(0).trigger("mouseover");
+</script>
+
+
+<!--%=image_tag("http://img.xmfish.com/attachment/Mon_1304/114_810244_3676f6ab0a64ad9.jpg", height: '620', width: '920')%-->
+
+
+</head>
+<h1 style='text-align:center'>欢迎来到敏捷销售网！</h1>
+<div style='text-align:center'>
+  <%= link_to "我要登陆！", login_path, class: "btn btn-lg btn-primary" %>
+    
+  <%= link_to "我要注册！", new_user_path, class: "btn btn-lg btn-primary" %>
+</div> 
+</div>
+<!--h3>Listing Users</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Password</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.password %></td>
+        <td><%= link_to 'Show', user %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody-->
+</table>
+<br>
+

@@ -1,0 +1,14 @@
+<span>
+<%=image_tag("http://img.teamkn.com/i/xLchYgHk.png", size: "200x100", alt: "Edit Entry")%>
+<%=image_tag("http://img.teamkn.com/i/tVzAlrY9.png", size: "200x100", alt: "Edit Entry")%>
+<%=image_tag("http://img.teamkn.com/i/e5McXk9W.png", size: "200x100", alt: "Edit Entry")%>
+</span></br>
+<%= form_tag(chongzhichenggong_path) do %>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用支付宝支付&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%=radio_button_tag '支付宝', 'x'%>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用财付通支付&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%=radio_button_tag '支付宝', 'x'%>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用西联支付&nbsp;&nbsp;&nbsp;&nbsp; <%=radio_button_tag '支付宝', 'x'%>
+</br>
+
+<%=text_field_tag 'chongzhi', '', :placeholder => '输入充值金额'%>
+  <div><%= submit_tag '充值' %></div>
+<% end %>

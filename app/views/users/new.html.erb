@@ -1,0 +1,91 @@
+<h1 style='text-align:center;font-weight:800'>注册页面</h1>
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<div style="background:url(http://img.teamkn.com/i/szilSmxd.jpg) ;background-repeat: no-repeat;
+background-attachment:fixed;
+background-position: 50% 70%;text-align:center;">
+    <div>
+    <%= f.label :昵称 %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div >
+    <%= f.label :你的email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div>
+    <%= f.label :你的手机 %><br>
+    <%= f.text_field :phone %>
+  </div>
+  <div>
+    <%= f.label :密码 %><br>
+    <%= f.password_field :password %>
+  </div>
+  <div>
+    <%= f.label :重新输入密码 %><br>
+    <%= f.password_field :password_confirmation 
+    %>
+  </div>
+
+<div style="background-color:red ;width:600px;text-align:center;position:relative;
+right:-260px">
+
+<h3 style="color:blue">头像选择</h3>
+<span>
+  <%=image_tag("http://img.teamkn.com/i/ResDC3VA.jpg", size: "70x70", alt: "Edit Entry")%>
+  <%= f.radio_button 'logo', 'http://img.teamkn.com/i/ResDC3VA.jpg'%>
+  
+  <%= f.label :头像a %>
+
+<%=image_tag("http://img.teamkn.com/i/hTzksl6x.jpg", size: "70x70", alt: "Edit Entry")%>
+
+
+  <%= f.radio_button 'logo', 'http://img.teamkn.com/i/hTzksl6x.jpg'%>
+  <%= f.label :头像b %>
+
+<%=image_tag("http://img.teamkn.com/i/mwYJCxQh.jpg", size: "70x70", alt: "Edit Entry")%>
+
+
+  <%= f.radio_button 'logo', 'http://img.teamkn.com/i/ResDC3VA.jpg'%>
+  <%= f.label :头像c %>
+
+</span></br>
+
+<%=image_tag("http://img.teamkn.com/i/rMXVIvmr.jpg", size: "70x70", alt: "Edit Entry")%>
+
+  <%= f.radio_button 'logo', 'http://img.teamkn.com/i/rMXVIvmr.jpg'%>
+  <%= f.label :头像d %>
+
+
+<%=image_tag("http://img.teamkn.com/i/i8Sa3h2A.jpg", size: "70x70", alt: "Edit Entry")%>
+
+  <%= f.radio_button 'logo', 'http://img.teamkn.com/i/i8Sa3h2A.jpg'%>
+  <%= f.label :头像e %>
+
+
+<%=image_tag("http://img.teamkn.com/i/GhrxcmZK.jpg", size: "70x70", alt: "Edit Entry")%>
+
+  <%= f.radio_button 'logo', 'http://img.teamkn.com/i/GhrxcmZK.jpg'%>
+  <%= f.label :头像f %>
+</div>
+
+
+<%=hidden_field_tag 'user[money]', 30.0%>
+
+<div class="actions">
+    <%= f.submit "注册", class: "btn btn-primary" %>
+</div>
+  
+<% end %>
+
