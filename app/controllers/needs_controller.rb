@@ -15,6 +15,16 @@ class NeedsController < ApplicationController
   # GET /needs/new
   def new
     @need = Need.new
+    @user=User.find(session[:user_id])
+    @a=params[:url] 
+    # @b= addurl @a 
+    # @b ||= []
+    # @b.push(@a)
+
+
+  end
+  def save_image_urls
+    @a=params[:url] 
   end
 
   # GET /needs/1/edit
@@ -24,13 +34,23 @@ class NeedsController < ApplicationController
   # POST /needs
   # POST /needs.json
   def create
-    @need = Need.new(need_params)
+    @title=params[:need][:title]
+    @description=params[:need][:description]
+    @number=params[:need][:number]
+    @solve=params[:need][:solve]
+    @user_id=params[:need][:user_id]
+    @image_urls=JSON.generate(params[:need][:image_urls])
+    @tags=JSON.generate(params[:need][:tags])
+
+    @need = Need.new(:title=>@title,:description=>@description,:number=>@number,:solve=>@solve,:user_id=>@user_id,:image_urls=>@image_urls,:tags=>@tags)
 
     respond_to do |format|
+
       if @need.save
         format.html { redirect_to @need, notice: 'Need was successfully created.' }
         format.json { render :show, status: :created, location: @need }
       else
+        @tags=JSON.generate(params[:need][:tags])
         format.html { render :new }
         format.json { render json: @need.errors, status: :unprocessable_entity }
       end
@@ -69,6 +89,5 @@ class NeedsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def need_params
-      params[:need]
     end
 end

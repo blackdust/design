@@ -1,5 +1,38 @@
 <% provide(:title, @user.name) %>
 <style type="text/css">
+
+
+/*
+button特效
+*/
+.myButton {
+  -moz-box-shadow:inset 0px -1px 9px -13px #fff6af;
+  -webkit-box-shadow:inset 0px -1px 9px -13px #fff6af;
+  box-shadow:inset 0px -1px 9px -13px #fff6af;
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffec64), color-stop(1, #ffab23));
+  width:100px;
+  text-align: center;
+  display: inline-block;
+
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffec64', endColorstr='#ffab23',GradientType=0);
+  
+}
+.myButton:hover {
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffab23), color-stop(1, #ffec64));
+  background:-moz-linear-gradient(top, #ffab23 5%, #ffec64 100%);
+  background:-webkit-linear-gradient(top, #ffab23 5%, #ffec64 100%);
+  background:-o-linear-gradient(top, #ffab23 5%, #ffec64 100%);
+  background:-ms-linear-gradient(top, #ffab23 5%, #ffec64 100%);
+  background:linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffab23', endColorstr='#ffec64',GradientType=0);
+  background-color:#ffab23;
+}
+.myButton:active {
+  position:relative;
+  top:1px;
+}
+
+
 table.gridtable {
   font-family: verdana,arial,sans-serif;
   font-size:12px;
@@ -51,6 +84,7 @@ td {
   }
  
 </style>
+
 <script>
 jQuery(document).ready(function(){
   //首页找到现在的时间进行加载  
@@ -358,7 +392,7 @@ $('#year').text(year2);
   </div>
 
 <div id='menu'>
- <h3 style='color:black;font-size:1.6em'> ☆顾客<%= @user.name %>你好.</br> </br> 你的id:<%= @user.id %> 这里是api查询页面.</h3></br>
+ <h5 style='color:black;font-size:1.3em'> ☆顾客<%= @user.name %>你好.</br> </br> 你的id:<%= @user.id %> 这里是敏捷api查询页面.</h5></br>
 <div style="width:150px; height:150px; border-radius:50%;  overflow:hidden;">
      <%=image_tag(@user.logo,size:'150x150')%>
      </div></br>
@@ -371,9 +405,23 @@ $('#year').text(year2);
   <%= render 'classifysearchform' %>
 </div>
 
-<div id='menu2'> <h3>需求板块：</h3></br>
+<div id='menu2'> <h5>需求板块：</h5></br>
   <p>你的余额为：<%=@money%></p>
-   <%= link_to '充值', chongzhi_path%>
+   <%= link_to '充值', chongzhi_path%></br>
+   <hr >
+  
+   <div class='myButton'>
+   <%= link_to'申请需求', new_need_path %>
+   </div>
+   <div class='myButton'>
+   <%=link_to'需求大厅', needs_path %>
+   </div>
+   <!--div class='myButton'>
+   <%=link_to'我的需求', needs_path %>
+   </div-->
+   
+
+
 
 
 </div>
@@ -385,6 +433,8 @@ $('#year').text(year2);
    <span id='month'>x</span>月
   <button class='button'>下一月</button>
  </div>
+
+
    
  <table class='gridtable'>
  <tr>
@@ -464,7 +514,6 @@ $('#year').text(year2);
 </div-->  
 
 </div>
-
 
 </div>
 

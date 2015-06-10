@@ -1,5 +1,92 @@
-<h1>New Need</h1>
+<head>
+<style type="text/css">
+
+.x {
+  -moz-box-shadow: 0px 1px 0px 0px #1c1b18;
+  -webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
+  box-shadow: 0px 1px 0px 0px #1c1b18;
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #eae0c2), color-stop(1, #ccc2a6));
+  background:-moz-linear-gradient(top, #eae0c2 5%, #ccc2a6 100%);
+  background:-webkit-linear-gradient(top, #eae0c2 5%, #ccc2a6 100%);
+  background:-o-linear-gradient(top, #eae0c2 5%, #ccc2a6 100%);
+  background:-ms-linear-gradient(top, #eae0c2 5%, #ccc2a6 100%);
+  background:linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#eae0c2', endColorstr='#ccc2a6',GradientType=0);
+  background-color:#eae0c2;
+  -moz-border-radius:41px;
+  -webkit-border-radius:41px;
+  border-radius:41px;
+  border:2px solid #333029;
+  display:inline-block;
+  cursor:pointer;
+  color:#505739;
+  font-family:Arial;
+  font-size:14px;
+  font-weight:bold;
+  padding:16px 6px;
+  text-decoration:none;
+  text-shadow:0px 1px 0px #ffffff;
+}
+.x:hover {
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ccc2a6), color-stop(1, #eae0c2));
+  background:-moz-linear-gradient(top, #ccc2a6 5%, #eae0c2 100%);
+  background:-webkit-linear-gradient(top, #ccc2a6 5%, #eae0c2 100%);
+  background:-o-linear-gradient(top, #ccc2a6 5%, #eae0c2 100%);
+  background:-ms-linear-gradient(top, #ccc2a6 5%, #eae0c2 100%);
+  background:linear-gradient(to bottom, #ccc2a6 5%, #eae0c2 100%);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ccc2a6', endColorstr='#eae0c2',GradientType=0);
+  background-color:#ccc2a6;
+}
+.x:active {
+  position:relative;
+  top:1px;
+}
+.y{color:red;}
+.image{border:5px solid red;padding:5px;}
+
+</style>
+
+
+
+<script>
+$(document).ready(function(){
+
+
+
+$(".x:eq(1)").click(function() 
+{
+var url
+url = $('.y').val();
+// $('h1').text(url);
+$('.y').val('');
+// $("<input type="hidden" name="need[image_urls][]" id="need_image_urls_" value=a>").insertAfter('#hidden')
+var hidden_form="<input type=\"hidden\" name=\"need[image_urls][]\" id=\"need_image_urls_\" value="+url+">"
+var image_tag="<img alt=\"这个链接有问题\" src="+url+" width=\"200\" height=\"300\" class=\"image\">&nbsp;&nbsp;"
+var count=$(".image").length 
+if (count<3){
+$("#hidden").after(hidden_form);
+$(image_tag).insertBefore("#show_image")}else{alert("上传的图片最多3张", "图片数量过多");}
+
+
+
+});
+
+
+
+});
+
+</script>
+
+
+
+
+</head> 
+
+<body>
+<h1>新的需求</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', needs_path %>
+<%= link_to 'Back', current_user %>
+
+<body>

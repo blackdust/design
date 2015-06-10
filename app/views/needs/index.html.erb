@@ -1,6 +1,39 @@
+
+<style type="text/css">
+.bt1 {
+  -moz-box-shadow:inset 0px 39px 0px -24px #e67a73;
+  -webkit-box-shadow:inset 0px 39px 0px -24px #e67a73;
+  box-shadow:inset 0px 39px 0px -24px #e67a73;
+  background-color:#e4685d;
+  -moz-border-radius:4px;
+  -webkit-border-radius:4px;
+  border-radius:4px;
+  border:1px solid #ffffff;
+  display:inline-block;
+  cursor:pointer;
+  color:#ffffff;
+  font-family:Arial;
+  font-size:15px;
+  padding:6px 3px;
+  text-decoration:none;
+  text-shadow:0px 1px 0px #b23e35;
+}
+.bt1:hover {
+  background-color:#eb675e;
+}
+.bt1:active {
+  position:relative;
+  top:1px;
+}
+
+
+</style>
+
+
+
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Needs</h1>
+<h1>需求大厅</h1>
 
 <table>
   <thead>
@@ -10,16 +43,27 @@
   </thead>
 
   <tbody>
+    
     <% @needs.each do |need| %>
       <tr>
-        <td><%= link_to 'Show', need %></td>
-        <td><%= link_to 'Edit', edit_need_path(need) %></td>
-        <td><%= link_to 'Destroy', need, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <div class='bt1'>
+        <%= link_to '显示', need %>
+        </div>
+        <% @user_image=User.find(need.user_id).logo%>
+        <%=image_tag(@user_image, size: "80x80", )%> 
+        <%= need.title %>
+        <p style='color:red;display:inline'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发布时间：</p>发布时间<%= need.created_at%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <p style='color:red;display:inline'>标签</p>
+        <%= need.tags%></br>
+
+        <!-- <td><%= link_to 'Edit', edit_need_path(need) %></td> -->
+        <!-- <td><%= link_to 'Destroy', need, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
       </tr>
     <% end %>
+  
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Need', new_need_path %>
+<%= link_to '新建需求', new_need_path %>

@@ -1,5 +1,13 @@
 <h1>New Classifybook</h1>
 
+
 <%= render 'form' %>
 
+
+
+
 <%= link_to 'Back', classifybooks_path %>
+<%= form_tag(new_need_path) do %>
+<%=text_field_tag 'url', '', :placeholder => '插入图片'%>
+<div><%= submit_tag '上传' %></div>
+<% end %>

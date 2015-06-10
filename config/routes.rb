@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :products
   get 'users/chongzhi'
   post 'pay'=>'users#show'
-
+  post 'needs/new'
   get 'sessions/new'
   get 'chongzhi'=>'users#chongzhi'
   post 'chongzhichenggong'=>'users#chongzhichenggong'

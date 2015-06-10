@@ -1,3 +1,4 @@
+<div style='heigh=100%;width=40%;display:inline-block'>
 <%= form_for(@need) do |f| %>
   <% if @need.errors.any? %>
     <div id="error_explanation">
@@ -11,7 +12,73 @@
     </div>
   <% end %>
 
+  <div>
+    <%= f.label :标题 %><br>
+    <%= f.text_field :title %>
+
+  </div>
+  <div>
+  图书 
+  <%=check_box_tag 'need[tags][]', '图书' %>
+  cd
+  <%=check_box_tag 'need[tags][]', 'cd' %>
+  杂志
+  <%=check_box_tag 'need[tags][]', '杂志' %>
+  周边
+  <%=check_box_tag 'need[tags][]', '周边' %>
+  其他
+  <%=check_box_tag 'need[tags][]', '其他' %>
+  </div>
+
+  <div >
+    <%= f.label :描述 %><br>
+    <%= f.text_area :description,size:'20x15' %>
+  </div> 
+  <div>
+    <%= f.label :你的联系方式 %><br>
+    <%= f.text_field :number %>
+  </div>
+
+
+<!-- jquery做手脚的地方 -->
+  <div id='hidden'>
+  <%=hidden_field_tag 'need[solve]', false%>
+  <%=hidden_field_tag 'need[user_id]', @user.id%>
+ 
+  </div>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit'提交' %>
   </div>
 <% end %>
+</div>
+
+<!-- 传入图片时候展示的地方 -->
+<div id='show_image'>
+
+</div>  
+
+
+<span>
+<p class="x">图片url
+<%=text_field_tag 'url', '',:class=>"y"%>
+&nbsp;&nbsp;&nbsp;</p>
+<!-- 触发jquery点击效果的地方 -->
+<p class="x">点击上传</p>
+<span>
+
+
+<!-- <div id='tupian'>
+<%= form_tag(new_need_path) do %>
+上传图片</br>
+<%=text_field_tag 'url'%>
+</br>
+<%= submit_tag '上传' %>
+<% end %>
+</div> 
+ -->
+
+
+
+
+</div>
