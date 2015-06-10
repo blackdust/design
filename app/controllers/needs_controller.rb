@@ -5,6 +5,7 @@ class NeedsController < ApplicationController
   # GET /needs.json
   def index
     @needs = Need.all
+    @i=session[:user_id]
   end
 
   # GET /needs/1

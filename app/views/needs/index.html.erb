@@ -50,14 +50,27 @@
         <%= link_to '显示', need %>
         </div>
         <% @user_image=User.find(need.user_id).logo%>
-        <%=image_tag(@user_image, size: "80x80", )%> 
+        <% @name=User.find(need.user_id).name%>
+        <%=image_tag(@user_image, size: "80x80", )%> &nbsp;&nbsp;&nbsp;
+        <%=@name%>&nbsp;&nbsp;&nbsp;
         <%= need.title %>
-        <p style='color:red;display:inline'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发布时间：</p>发布时间<%= need.created_at%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <p style='color:red;display:inline'>标签</p>
-        <%= need.tags%></br>
 
-        <!-- <td><%= link_to 'Edit', edit_need_path(need) %></td> -->
-        <!-- <td><%= link_to 'Destroy', need, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+        <p style='color:red;display:inline'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发布时间：</p>
+        <% @time=need.created_at.to_s[0,20]%>
+        <%=@time%>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <p style='color:red;display:inline'>标签:</p>
+        <%@tags= JSON.parse(need.tags)%>
+        <%@tags.each do |tag|%>
+        <%=tag%>&nbsp;
+        <%end%>
+
+    
+        <% if need.user_id.to_i==@i.to_i %>
+          <strong>我的需求</strong>&nbsp;&nbsp;
+          <%= link_to '删除', need, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%end%>  
+      </br>
       </tr>
     <% end %>
   
