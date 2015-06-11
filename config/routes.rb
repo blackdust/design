@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   resources :serchbooknames
 
   resources :products
+  post 'answer'=>'needs#create_answer'
+  post 'needs/create_answer'
   get 'users/chongzhi'
   post 'pay'=>'users#show'
   post 'needs/new'

@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-
+  has_many :need
   validates :name, presence: true
   validates :email, presence: true
   validates :name,  presence: true, length: { maximum: 50 }

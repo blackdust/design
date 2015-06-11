@@ -1,6 +1,7 @@
 class NeedsController < ApplicationController
   before_action :set_need, only: [:show, :edit, :update, :destroy]
-
+  def create_answer
+  end
   # GET /needs
   # GET /needs.json
   def index

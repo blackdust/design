@@ -1,8 +1,25 @@
 
+
+<script>
+
+jQuery(document).ready(function(){
+
+$(".bt2").click(function() 
+{
+
+  // var string="<form class=\"new_answer\" id=\"new_answer\" action=\"/needs/create_answer\"accept-charset=\"UTF-8\" method= \"post\">
+  //   <label for=\"need_描述\">描述</label><br><textarea name=\"answer[description]\" id=\"answer_description\" cols=\"20\" rows=\"15\"></textarea><br><input type=\"submit\" name=\"commit\" value=\"提交\">"
+  // $(".bt2").after(string);
+
+
+});
+});
+
+</script>
 <div id='menu4'>
   <div id='menu5'> <!--上面那一行--> 
     <div id='menu7'>
-      <p id="notice"><%= notice %></p>
+     <!--  <p id="notice"><%= notice %></p> -->
 
   
     <%@logo_url=User.find(@need.user_id).logo%>
@@ -39,8 +56,17 @@
   </p>
   </div>
 
-  <div >
-    <h5>评论框:</h5></br>
+  <div>
+    <h6>评论框:</h6></br>
+<!-- <p class="bt2">我要评论</p> -->
+<%@viewer_id=session[:user_id]%>
+
+<%= form_tag(answer_path) do %>
+
+<%=text_field_tag 'answer[words]', '', :placeholder => '输入评论'%>
+<%=hidden_field_tag 'answer[user_id]',@viewer_id%>
+  <div><%= submit_tag '提交' %></div>
+<%end%> 
 
   </div>
 
