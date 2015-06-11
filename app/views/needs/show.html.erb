@@ -1,4 +1,63 @@
-<p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_need_path(@need) %> |
-<%= link_to 'Back', needs_path %>
+<div id='menu4'>
+  <div id='menu5'> <!--上面那一行--> 
+    <div id='menu7'>
+      <p id="notice"><%= notice %></p>
+
+  
+    <%@logo_url=User.find(@need.user_id).logo%>
+    <%@name=User.find(@need.user_id).name%>
+  
+    <%=image_tag(@logo_url,size: "120x120", )%></br>
+    <strong>Title:</strong>
+    
+    <%= @need.title %></br>
+  
+   <strong>标签:</strong>
+        <%@tags= JSON.parse(@need.tags)%>
+        <%@tags.each do |tag|%>
+        <%=tag%>&nbsp;
+        <%end%></br>
+    <strong>联系方式:   
+    <%= @need.number %> id:<%=@name%></strong>
+    </div>
+
+   <strong>图片:</strong>
+        <%@images= JSON.parse(@need.image_urls)%>
+        <%@images.each do |a|%>
+        <%=image_tag(a,size: "170x200", )%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <%end%></td>
+
+
+</div>
+
+<div id='menu6'>
+  <div id='menu8'>
+  <p>
+  <strong>需求描述:</strong></br>
+  <%= @need.description %>
+  </p>
+  </div>
+
+  <div >
+    <h5>评论框:</h5></br>
+
+  </div>
+
+</div>
+
+
+
+
+<!--<%= link_to 'Edit', edit_need_path(@need) %> 
+<%= link_to 'Back', needs_path %>-->
+
+</div>
+
+
+
+
+
+
+
+</div>

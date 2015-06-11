@@ -16,7 +16,12 @@
     总价=<%=@value%>元
     <%if @value!=0%>
       <%= button_to "清空购物车", checkout_path %>
-      <%=button_to'添加订单',makeorder_path(:information=> @information,:total_price=>@value,:user_id=>session[:user_id])%>
+       <%if @user_money>=@value%>
+       <%=button_to'添加订单',makeorder_path(:information=> @information,:total_price=>@value,:user_id=>session[:user_id])%>
+       <%else%>
+       <p style='color:red'>余额不足</p>
+       <%end%>
+
       <%else%>
       <h3>购物车没有商品！</h3>
       <%= link_to '继续购物', current_user %>

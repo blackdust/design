@@ -21,6 +21,8 @@ class UsersController < ApplicationController
 
     pay=params[:pay]
     if pay.present?
+    @user.money= @user.money-pay.to_f
+    @user.save 
     @money=@money-pay.to_f
     end
     #@serchbookname.user_id=@user.id

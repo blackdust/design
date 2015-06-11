@@ -48,7 +48,7 @@ class NeedsController < ApplicationController
     respond_to do |format|
 
       if @need.save
-        format.html { redirect_to @need, notice: 'Need was successfully created.' }
+        format.html { redirect_to @need, notice: '成功创建了需求' }
         format.json { render :show, status: :created, location: @need }
       else
         @tags=JSON.generate(params[:need][:tags])

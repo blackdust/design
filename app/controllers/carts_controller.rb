@@ -68,6 +68,8 @@ class CartsController < ApplicationController
     end
   end
   def cartitems
+    @user=User.find(session[:user_id])
+    @user_money=@user.money
     #@items=Cart.find_by(user_id:session[:user_id])
     @items = Cart.where(user_id:session[:user_id])
     @classcount = @items.count
