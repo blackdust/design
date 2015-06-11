@@ -9,15 +9,15 @@
 <!--%=render @cart%-->
 </div>
 
-<p>
+<!-- <p>
   <strong>UserID:</strong>
   <%= @classifybook.user_id %>
-</p>
+</p> -->
 
-<%=button_to '1-50', makepages_path(:page=>0,:id=>@classifybook.id)%>
-<%=button_to '51-100', makepages_path(:page=>50,:id=>@classifybook.id)%>
-<%=button_to '101-150', makepages_path(:page=>100,:id=>@classifybook.id)%>
-<%=button_to '151-200', makepages_path(:page=>150,:id=>@classifybook.id)%>
+<%=button_to '第1页', makepages_path(:page=>0,:id=>@classifybook.id),form_class: "new-thing"%>
+<%=button_to '第2页', makepages_path(:page=>50,:id=>@classifybook.id),form_class: "new-thing"%>
+<%=button_to '第3页', makepages_path(:page=>100,:id=>@classifybook.id),form_class: "new-thing"%>
+<%=button_to '第4页', makepages_path(:page=>150,:id=>@classifybook.id),form_class: "new-thing"%>
 
 <% @list.each do |p| %>
  <hr/>
@@ -30,15 +30,13 @@
     <div class="logo">
     <span>封面：</span>
     <%=image_tag(p['image'],size:"200")%>
-    </div>
-    <div class="des">
+     <div class="des">
      <p>简介：<%if p['summary'].empty?%>
               <p>没有简介</p>
               <%else%>    
               <%= p['summary'][0..600]%>
               <%end%>
     </p>
-
     </div>
     <div class="clear"></div>
   </div>   

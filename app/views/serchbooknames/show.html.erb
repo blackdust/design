@@ -8,21 +8,21 @@
 <div id='side'>
 <!--%=render @cart%-->
 </div>
-<div id='pagebutton'>
-<%=button_to '1-50', makepages2_path(:page=>0,:id=>@serchbookname.id)%>
-<%=button_to '51-100', makepages2_path(:page=>50,:id=>@serchbookname.id)%>
-<%=button_to '101-150', makepages2_path(:page=>100,:id=>@serchbookname.id)%>
-<%=button_to '151-200', makepages2_path(:page=>150,:id=>@serchbookname.id)%>
-</div>
+
+<%=button_to '第一页', makepages2_path(:page=>0,:id=>@serchbookname.id),form_class: "new-thing" %>
+<%=button_to '第二页', makepages2_path(:page=>50,:id=>@serchbookname.id),form_class: "new-thing"%>
+<%=button_to '第三页', makepages2_path(:page=>100,:id=>@serchbookname.id),form_class: "new-thing"%>
+<%=button_to '第四页', makepages2_path(:page=>150,:id=>@serchbookname.id),form_class: "new-thing"%>
 
 
 
-<p>
+
+<!-- <p>
   <strong>UserID:</strong>
   <%= @serchbookname.user_id %>
-</p>
+</p> -->
 <% @list.each do |p| %>
- <h3>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</h3>
+ <hr>
   <p>书名：<%= p['title']%>
   </p>
   <p>价格：<%= p['price']%>
