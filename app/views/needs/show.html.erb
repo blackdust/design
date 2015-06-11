@@ -9,6 +9,7 @@ $(".bt2").click(function()
 
   // var string="<form class=\"new_answer\" id=\"new_answer\" action=\"/needs/create_answer\"accept-charset=\"UTF-8\" method= \"post\">
   //   <label for=\"need_描述\">描述</label><br><textarea name=\"answer[description]\" id=\"answer_description\" cols=\"20\" rows=\"15\"></textarea><br><input type=\"submit\" name=\"commit\" value=\"提交\">"
+
   // $(".bt2").after(string);
 
 
@@ -64,11 +65,22 @@ $(".bt2").click(function()
 <%= form_tag(answer_path) do %>
 <%=text_area_tag 'answer[words]', '', :placeholder => '输入评论',size:'50x4'%>
 <%=hidden_field_tag 'answer[user_id]',@viewer_id%>
-<%=hidden_field_tag 'answer[needs_id]',@need.id%>
+<%=hidden_field_tag 'answer[need_id]',@need.id%>
 <%= submit_tag '提交' %>
 <%end%> 
 
+<%@need.answers.each do |a|%>
+<%@logo=User.find(a[:user_id]).logo%>
+<%@username=User.find(a[:user_id]).name%>
+<%=image_tag(@logo,size: "40x40", )%>
+用户id：<%=a[:user_id]%>
+用户名：<%=@username%>
+留言：<%=a[:words]%>
+<hr>
+<%end%>
+
   </div>
+
 
 </div>
 

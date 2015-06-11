@@ -90,8 +90,6 @@ class UsersController < ApplicationController
     p @user.money
 
     @user.money+=@money.to_f
-
-    p 1111111111111
     p @user.errors
 
     @user.save

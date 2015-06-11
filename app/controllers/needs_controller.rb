@@ -1,7 +1,20 @@
 class NeedsController < ApplicationController
   before_action :set_need, only: [:show, :edit, :update, :destroy]
+
   def create_answer
-    
+    @words=params[:answer][:words]
+    @user_id=params[:answer][:user_id]
+    @need_id=params[:answer][:need_id]
+    # @answer= Answer.new
+    @need=Need.find(@need_id)
+    p 111111111111111111111111111111111
+    p @need
+    @answer=Answer.create(:user_id=>@user_id,:words=>@words,:need_id=>@need_id)
+    p @answer
+    redirect_to @need
+     # if @answer.save     
+     #    format.html { redirect_to @need, notice:'留言成功' }
+     # end  
   end
   # GET /needs
   # GET /needs.json
