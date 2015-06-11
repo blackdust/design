@@ -57,15 +57,15 @@ $(".bt2").click(function()
   </div>
 
   <div>
-    <h6>评论框:</h6></br>
+    <h6>评论框:</h6>
 <!-- <p class="bt2">我要评论</p> -->
 <%@viewer_id=session[:user_id]%>
 
 <%= form_tag(answer_path) do %>
-
-<%=text_field_tag 'answer[words]', '', :placeholder => '输入评论'%>
+<%=text_area_tag 'answer[words]', '', :placeholder => '输入评论',size:'50x4'%>
 <%=hidden_field_tag 'answer[user_id]',@viewer_id%>
-  <div><%= submit_tag '提交' %></div>
+<%=hidden_field_tag 'answer[needs_id]',@need.id%>
+<%= submit_tag '提交' %>
 <%end%> 
 
   </div>
