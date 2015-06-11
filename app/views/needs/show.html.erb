@@ -73,9 +73,10 @@ $(".bt2").click(function()
 <%@logo=User.find(a[:user_id]).logo%>
 <%@username=User.find(a[:user_id]).name%>
 <%=image_tag(@logo,size: "40x40", )%>
-用户id：<%=a[:user_id]%>
+<!-- 用户id：<%=a[:user_id]%> -->
 用户名：<%=@username%>
 留言：<%=a[:words]%>
+时间：<%=a[:created_at].to_s[0,20]%>
 <hr>
 <%end%>
 
